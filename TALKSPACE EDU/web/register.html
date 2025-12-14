@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALKSPACE EDU - Register</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Dark Mode Colors */
+            --primary: #7e8078; /* Primary for buttons/accents */
+            --bg: #121212; /* Main background */
+            --surface: #212121; /* Container/form background */
+            --text-light: #dddddd; /* Main text color */
+            --text-muted: #cfcfcf; /* Secondary text color */
+            --border: #242526; /* Border color */
+            --input-bg: #161618; /* Input background */
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            font-family: Inter, sans-serif;
+            color: var(--text-light);
+        }
+
+        .navbar {
+            background: #0A0A0A; /* Dark header/navbar color */
+            padding: 22px 25px;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #212121;
+        }
+
+        .navbar h1 { font-family: Poppins; margin: 0; }
+        .nav-links a {
+            color: #ffffff;
+            margin-left: 20px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 450px;
+            background: var(--surface);
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+
+        h2 { 
+            font-family: Poppins;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 15px;
+            color: #e3e3e3;
+        }
+
+        input, select, button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid var(--input-bg);
+            background: var(--input-bg);
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        select {
+            margin-bottom: 15px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 6px rgba(126,128,120,0.3);
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover { background: #373930; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>TALKSPACE EDU</h1>
+        <div class="nav-links">
+            <a href="index.html">Already have an account? Login here</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Create an Account</h2>
+
+        <label for="role">Register As:</label>
+        <select id="role" onchange="toggleFields()">
+            <option value="student">Student</option>
+            <option value="counselor">Counselor</option>
+        </select>
+
+        <form action="dashboard.html">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+
+            <div id="studentFields">
+                <input type="text" placeholder="Student ID">
+                <input type="text" placeholder="Course / Department">
+            </div>
+
+            <div id="counselorFields" style="display:none;">
+                <input type="text" placeholder="Counselor ID">
+                <input type="text" placeholder="Specialization">
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleFields() {
+            let role = document.getElementById("role").value;
+
+            document.getElementById("studentFields").style.display =
+                (role === "student") ? "block" : "none";
+
+            document.getElementById("counselorFields").style.display =
+                (role === "counselor") ? "block" : "none";
+        }
+    </script>
+
+</body>
+</html>

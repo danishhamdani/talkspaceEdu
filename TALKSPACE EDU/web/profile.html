@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TALKSPACE EDU - Profile</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #dddddd;
+}
+
+/* ===== Header ===== */
+header {
+    background: #0A0A0A;
+    color: #ffffff;
+    padding: 22px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #212121;
+}
+
+.home-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #212121;
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.home-btn:hover {
+    background: #2E2E2E;
+    box-shadow: 0 0 6px rgba(255,255,255,0.08);
+}
+
+/* ===== Container ===== */
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* ===== Form Card ===== */
+form {
+    background: #212121;
+    padding: 26px;
+    border-radius: 12px;
+    border: 1px solid #242526;
+    line-height: 1.7;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* ===== Labels ===== */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #e3e3e3;
+}
+
+/* ===== Inputs ===== */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #161618;
+    border-radius: 8px;
+    background: #161618;
+    color: #dddddd;
+    font-size: 14px;
+    transition: 0.25s ease;
+}
+
+input::placeholder {
+    color: #9a9a9a;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #7e8078;
+    box-shadow: 0 0 8px rgba(126,128,120,0.35);
+    background: #181818;
+}
+
+/* ===== Button ===== */
+.button {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    background: linear-gradient(135deg, #7e8078, #5f615a);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #8f9189, #6b6d66);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+/* Keep spacing clean */
+form > *:not(:last-child) {
+    margin-bottom: 2px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a class="home-btn" href="dashboard.html">Home</a>
+    <h2>Your Profile</h2>
+</header>
+
+<div class="container">
+    <form>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+
+        <label for="role">Role</label>
+        <select id="role">
+            <option>Student</option>
+            <option>Counselor</option>
+        </select>
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" placeholder="Enter your phone number">
+
+        <a class="button" href="profile_view.html">Save Changes</a>
+    </form>
+</div>
+
+</body>
+</html>

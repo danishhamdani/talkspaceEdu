@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALKSPACE EDU - TimeSlot Management</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Dark Mode Colors */
+            --primary: #7e8078; /* Primary for buttons/accents */
+            --bg: #121212; /* Main background */
+            --surface: #212121; /* Container/form background */
+            --text-light: #dddddd; /* Main text color */
+            --text-muted: #cfcfcf; /* Secondary text color */
+            --border: #242526; /* Border color */
+            --input-bg: #161618; /* Input background */
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            font-family: Inter, sans-serif;
+            color: var(--text-light);
+        }
+
+        .navbar {
+            background: #0A0A0A; /* Dark header/navbar color */
+            padding: 22px 25px;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #212121;
+        }
+        .navbar h1 { font-family: Poppins; margin: 0; }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--surface);
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+
+        h2, h3 { 
+            font-family: Poppins; 
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        input {
+            margin: 0 0 12px 0;
+            box-sizing: border-box;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--input-bg);
+            background: var(--input-bg);
+            color: var(--text-light);
+            margin: 8px;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 6px rgba(126,128,120,0.3);
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        button:hover { background: #373930; }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #2f2f2f; /* Darker line for table rows */
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        th { 
+            background: #1a1a1a; /* Darker header row */
+            color: #ffffff;
+        }
+        
+        td {
+            background: #212121;
+        }
+        
+        tbody tr:nth-child(even) td {
+            background: #242526; /* Slightly different shade for even rows */
+        }
+
+        .btn-small {
+            padding: 6px 10px;
+            font-size: 14px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .edit { background: #ffc107; color: #121212; }
+        .edit:hover { background: #e0a800; }
+        .delete { background: #dc3545; color: white; }
+        .delete:hover { background: #c82333; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>TALKSPACE EDU</h1>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="appointments.html">Appointments</a>
+            <a href="profile_view.html">Profile</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>TimeSlot Management</h2>
+
+        <h3>Add New Time Slot</h3>
+
+        <input type="date" id="date">
+        <input type="time" id="start">
+        <input type="time" id="end">
+        <button onclick="addSlot()">Add Slot</button>
+
+        <h3>Existing Slots</h3>
+
+        <table id="slotTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+
+<script>
+    let slotTable = document.querySelector("#slotTable tbody");
+
+    function addSlot() {
+        let date = document.getElementById("date").value;
+        let start = document.getElementById("start").value;
+        let end = document.getElementById("end").value;
+
+        if (!date || !start || !end) {
+            alert("Please fill out all fields.");
+            return;
+        }
+
+        let row = slotTable.insertRow();
+      
+        row.innerHTML = `
+            <td>${date}</td>
+            <td>${start}</td>
+            <td>${end}</td>
+            <td>
+                <button class="btn-small edit" onclick="editSlot(this)">Edit</button>
+                <button class="btn-small delete" onclick="deleteSlot(this)">Delete</button>
+            </td>
+        `;
+    }
+
+    function deleteSlot(button) {
+        button.parentElement.parentElement.remove();
+    }
+
+    function editSlot(button) {
+        let row = button.parentElement.parentElement;
+
+        let newDate = prompt("Edit Date:", row.cells[0].innerText);
+        let newStart = prompt("Edit Start Time:", row.cells[1].innerText);
+        let newEnd = prompt("Edit End Time:", row.cells[2].innerText);
+
+        if (newDate && newStart && newEnd) {
+            row.cells[0].innerText = newDate;
+            row.cells[1].innerText = newStart;
+            row.cells[2].innerText = newEnd;
+        }
+    }
+</script>
+
+</body>
+</html>

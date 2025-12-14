@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TALKSPACE EDU - View Profile</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #dddddd;
+}
+
+/* ===== Header ===== */
+header {
+    background: #0A0A0A;
+    color: #ffffff;
+    padding: 22px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #212121;
+}
+
+.home-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #212121;
+    color: #7e8078;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.home-btn:hover {
+    background: #2E2E2E;
+    box-shadow: 0 0 6px rgba(255,255,255,0.08);
+}
+
+/* ===== Container ===== */
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* ===== Profile Card ===== */
+.profile-box {
+    background: #212121;
+    padding: 26px;
+    border-radius: 12px;
+    border: 1px solid #242526;
+    line-height: 1.8;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+.profile-box h3 {
+    margin-bottom: 18px;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+/* ===== Profile Items ===== */
+.item {
+    margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2f2f2f;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item label {
+    font-weight: bold;
+    color: #bfbfbf;
+    font-size: 15px;
+}
+
+.item p {
+    margin-top: 6px;
+    color: #e1e1e1;
+}
+
+/* ===== Update Button ===== */
+.update-btn {
+    display: block;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #7e8078, #5f615a);
+    color: #ffffff;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.update-btn:hover {
+    background: linear-gradient(135deg, #8f9189, #6b6d66);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a class="home-btn" href="dashboard.html">Home</a>
+    <h2>Profile Details</h2>
+</header>
+
+<div class="container">
+    <div class="profile-box">
+        <h3>Your Information</h3>
+
+        <div class="item">
+            <label>Full Name:</label>
+            <p>John Doe</p>
+        </div>
+
+        <div class="item">
+            <label>Email:</label>
+            <p>john@example.com</p>
+        </div>
+
+        <div class="item">
+            <label>Role:</label>
+            <p>Student</p>
+        </div>
+
+        <div class="item">
+            <label>Phone Number:</label>
+            <p>012-3456789</p>
+        </div>
+    </div>
+
+    <a class="update-btn" href="profile.html">Update Profile</a>
+</div>
+
+</body>
+</html>
