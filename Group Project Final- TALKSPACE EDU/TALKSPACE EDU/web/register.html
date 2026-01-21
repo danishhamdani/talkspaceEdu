@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALKSPACE EDU - Register</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+   
+    <style>
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+            color: #e0e0e0;
+        }
+
+        /* HEADER */
+        .navbar {
+            text-align: center;
+          font-size: 28px;
+          font-weight: 700;
+          padding: 1px 0;
+          color: #ffffff;
+          background-color: #1e1e1e;
+          border-bottom: 4px solid #333; 
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 400px;
+            margin: 60px auto;
+            background: #1e1e1e;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+        }
+
+        /* WELCOME TEXT */
+        .welcome {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .welcome h1 {
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .welcome h2 {
+            font-size: 28px;
+            font-weight: 600;
+             color: #E75480;
+        }
+       
+        .welcome p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #ccc;
+        }
+
+        h1 {
+            font-size: 28px;          
+            font-weight: 700;         
+            color: #ffffff;          
+            
+        }
+        h2 {
+            color: #E75480;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        /* FORM ELEMENTS */
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            font-size: 14px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+         select {
+            width: 107%;
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            font-size: 14px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        input:focus, select:focus {
+            border-color: #555;
+            outline: none;
+            box-shadow: 0 0 6px rgba(200,200,200,0.3);
+            background-color: #2a2a2a;
+        }
+
+        /* BUTTON */
+        button {
+            background-color: #8A9A5B;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #7b8b52;
+        }
+
+        /* LINKS */
+        a {
+            color: #8A9A5B;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #E75480;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        p.login-link {
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Student Counseling Appointment System</h1>
+    </div>
+
+    <div class="container">
+        <div class="welcome">
+        <h2>Create an Account</h2>
+        </div>
+
+       
+        <form action="RegisterServlet" method="POST">
+        <select id="role" name="role" onchange="toggleFields()">
+        <option value="student">Student</option>
+        <option value="counselor">Counselor</option>
+        </select>
+
+        <input type="text" name="fullName" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        
+    <div id="studentFields">
+        <input type="text" name="studentID" placeholder="Student ID">
+            <select id="department" name="department" required>
+            <option value="" disabled selected>Select Course</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Software Engineering">Software Engineering</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Business Administration">Business Administration</option>
+        </select>
+    </div>
+
+
+    <div id="counselorFields" style="display:none;">
+        <input type="text" name="counselorID" placeholder="Counselor ID">
+            <select id="specialization" name="specialization" required>
+            <option value="" disabled selected>Select Specialization</option>
+            <option value="Academic Counseling">Academic Counseling</option>
+            <option value="Career Counseling">Career Counseling</option>
+            <option value="Mental Health Counseling">Mental Health Counseling</option>
+            <option value="Stress Management">Stress Management</option>
+            <option value="Relationship Counseling">Relationship Counseling</option>
+        </select>
+    </div>
+        <button type="submit">Register</button>
+    </form>
+            <p class="login-link"> Already have an account?<a href="index.html"> Login here</a></p>
+    </div>
+
+    <script>
+        function toggleFields() {
+                let role = document.getElementById("role").value;
+
+                let studentField = document.getElementById("studentFields");
+                let counselorField = document.getElementById("counselorFields");
+
+                let department = document.getElementById("department");
+                let specialization = document.getElementById("specialization");
+
+                if (role === "student") {
+                    studentField.style.display = "block";
+                    counselorField.style.display = "none";
+                    department.required = true;
+                    specialization.required = false;
+                } else if (role === "counselor") {
+                    studentField.style.display = "none";
+                    counselorField.style.display = "block";
+                    department.required = false;
+                    specialization.required = true;
+                }
+            }
+        window.onload = toggleFields; 
+    </script>
+
+</body>
+</html>

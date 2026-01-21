@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment - Student Counseling Appointment System</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            padding: 20px 0;
+            color: #ffffff;
+            background-color: #1e1e1e;
+            border-bottom: 4px solid #333;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 60px auto;
+            background: #1e1e1e;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            border-color: #E75480;
+            outline: none;
+            box-shadow: 0 0 6px rgba(231,84,128,0.5);
+            background-color: #2a2a2a;
+        }
+
+        button {
+            background-color: #E75480; /* Pink accent */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #d64673;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #333;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2a2a2a;
+        }
+
+        tr:nth-child(even) {
+            background-color: #252525;
+        }
+
+        a {
+            color: #E75480;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="navbar">
+        Student Counseling Appointment System
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <h1>Book an Appointment</h1>
+
+        <!-- APPOINTMENT FORM -->
+        <form action="AppointmentServlet" method="post">
+            <label>Select Counselor</label>
+            <select name="counselorId" required>
+                <option value="1">Ms. Aisyah</option>
+                <option value="2">Mr. Daniel</option>
+            </select>
+
+            <label>Select Time Slot</label>
+            <select name="timeslotId" required>
+                <option value="1">10:00 AM - 12 Jan 2025</option>
+                <option value="2">11:00 AM - 12 Jan 2025</option>
+            </select>
+
+            <label>Purpose</label>
+            <input type="text" name="purpose" placeholder="Eg: Stress Management" required>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+
+        <!-- EXISTING APPOINTMENTS TABLE -->
+        <h1>Your Appointments</h1>
+        <table>
+            <tr>
+                <th>Counselor</th>
+                <th>Time Slot</th>
+                <th>Purpose</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Ms. Aisyah</td>
+                <td>10:00 AM - 12 Jan 2025</td>
+                <td>Stress Management</td>
+                <td>Confirmed</td>
+            </tr>
+            <tr>
+                <td>Mr. Daniel</td>
+                <td>11:00 AM - 12 Jan 2025</td>
+                <td>Career Guidance</td>
+                <td>Pending</td>
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+</html>
